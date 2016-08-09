@@ -35,7 +35,7 @@ TEMPLATES = [
 # TEMPLATE_DIRS = (
 #     "main/templates",
 # )
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [".herokuapp.com", ".vodka-seledka.com"]
 
 
 # Application definition
