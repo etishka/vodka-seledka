@@ -1,1 +1,1 @@
-web: gunicorn main.wsgi --log-file -
+web: gunicorn vodka_seledka_com.wsgi --log-file -
