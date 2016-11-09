@@ -18,7 +18,7 @@ PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 # See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '7!0fur8brb_s0ft()2q)!cxsztso%d9rej%0*&u^zvmj^(*=z1'
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', '7!0fur8brb_s0ft()2q)!cxsztso%d9rej%0*&u^zvmj^(*=z1')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -43,7 +43,7 @@ TEMPLATES = [
 # TEMPLATE_DIRS = (
 #     "main/templates",
 # )
-ALLOWED_HOSTS = [".herokuapp.com", ".vodka-seledka.com", "127.0.0.1"]
+ALLOWED_HOSTS = [".herokuapp.com", ".vodka-seledka.com", 'localhost', '127.0.0.1', '[::1]']
 
 
 # Application definition
@@ -54,11 +54,13 @@ INSTALLED_APPS = (
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
     'main'
 )
 
 MIDDLEWARE_CLASSES = (
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
